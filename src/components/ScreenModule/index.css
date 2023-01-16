@@ -1,0 +1,17 @@
+ul li {
+  list-style: none;
+}
+.tags-item {
+  text-align: center;
+  font-size: 14px;
+  color: #1A2E42;
+  padding: 3px 12px;
+  border-radius: 4px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.tags-item.active {
+  background-color: #FF6100;
+  color: #fff;
+}

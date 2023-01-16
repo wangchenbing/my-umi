@@ -1,0 +1,10 @@
+.inpGroup {
+  margin: 20px 0;
+}
+.inpGroup .inpDiv {
+  display: flex;
+}
+.inpGroup .inpDiv .inpBtn {
+  width: 60px;
+  text-align: center;
+}
