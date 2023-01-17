@@ -1,40 +1,10 @@
 import React, { useState } from 'react'
-import { Modal, Input } from 'antd';
+import { Input } from 'antd';
 import { CodeMirrorModul } from '@/components/Globol'
 import './index.less'
+import { btnList } from './enumer'
+import { typeList1, typeList2, listData, ParamsData } from './typeList'
 
-const typeList1 = [
-  {
-    name: '全部',
-    key: 0
-  },
-  {
-    name: '市级',
-    key: 1
-  },
-  {
-    name: '区县',
-    key: 2
-  },
-]
-const typeList2 = [
-  {
-    name: '全部',
-    key: null
-  },
-  {
-    name: '类型1',
-    key: '类型1'
-  },
-  {
-    name: '类型2',
-    key: '类型2'
-  },
-]
-interface ParamsData {
-  areaType: number;
-  policyType: any;
-}
 export default (props: any) => {
   const { isModalOpen, setIsModalOpen, title } = props
 
@@ -42,15 +12,8 @@ export default (props: any) => {
     areaType: 0,
     policyType: null
   })
-  const listData = [
-    { policyName: '市级类型1', key: 1, areaType: 1, policyType: '类型1' },
-    { policyName: '市级类型2', key: 2, areaType: 1, policyType: '类型2' },
-    { policyName: '区县类型1', key: 3, areaType: 2, policyType: '类型1' },
-    { policyName: '区县类型2', key: 4, areaType: 2, policyType: '类型2' },
-    { policyName: '省级类型1', key: 5, areaType: 3, policyType: '类型1' },
-  ]
-  const [keyword, setKeyWord] = useState('')
 
+  const [keyword, setKeyWord] = useState('')
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -87,7 +50,7 @@ export default (props: any) => {
   const filterData = handleChangeData()
 
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} url={require('!raw-loader!@/components/ScreenModule')}>
+    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} btnList={btnList}>
       <Input placeholder="搜索" style={{ width: '90%', marginBottom: 10 }} onChange={(e) => handleChangeInput(e)} />
       <div>
         <ul style={{ display: 'flex', padding: '0px', marginBottom: 9 }}>

@@ -1,11 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button } from 'antd';
+import { btnList } from './enumer'
 import store from './redux/store';
 import { CodeMirrorModul } from '@/components/Globol'
 import { createIncrementAction, createDecrementAction } from './redux/count_action';
 
 export default (props: any) => {
   const { isModalOpen, setIsModalOpen, title } = props
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -40,7 +42,7 @@ export default (props: any) => {
     }, 100)
   }
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} url={require('!raw-loader!@/components/ReduxCom')}>
+    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} btnList={btnList}>
 
       <h2>当前值:{store.getState()}</h2>
       <select ref={ref}>
