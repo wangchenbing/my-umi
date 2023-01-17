@@ -97,8 +97,14 @@ export default (props: any) => {
       message.warning('请输入正确的账号');
     }
   };
+  const propsList = {
+    title: title,
+    btnList: require('!raw-loader!@/components/VerificationCode'),
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} url={require('!raw-loader!@/components/VerificationCode')} >
+    <CodeMirrorModul {...propsList} >
       <div style={{
         marginTop: '50px'
       }}>

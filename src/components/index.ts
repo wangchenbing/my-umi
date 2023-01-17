@@ -6,6 +6,7 @@ import VerificationCodeModule from './VerificationCode'
 import ReduxComModule from './ReduxCom';
 import UseReducerModule from './UseReducer';
 import CodemirrorModule from './codemirror';
+import StorageModule from './Storage';
 
 export default {
   InnerHTMLModule,
@@ -15,5 +16,6 @@ export default {
   VerificationCodeModule,
   ReduxComModule,
   UseReducerModule,
-  CodemirrorModule
+  CodemirrorModule,
+  StorageModule
 }

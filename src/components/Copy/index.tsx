@@ -18,8 +18,14 @@ export default (props: any) => {
       message: 'Press #{key} to copy',
     });
   }
+  const propsList = {
+    title: title,
+    btnList: require('!raw-loader!@/components/Copy'),
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} url={require('!raw-loader!@/components/Copy')}>
+    <CodeMirrorModul {...propsList}>
       <Input.Group compact className={styleLess['inpGroup']} >
         <div className={styleLess['inpDiv']}>
           <Input

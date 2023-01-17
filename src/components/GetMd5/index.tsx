@@ -54,10 +54,16 @@ export default (props: any) => {
       setmd5data('')
     }
   }
+  const propsList = {
+    title: title,
+    btnList: require('!raw-loader!@/components/GetMd5'),
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
 
   return (
     <div>
-      <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} url={require('!raw-loader!@/components/GetMd5')}>
+      <CodeMirrorModul {...propsList}>
         <Upload {...uploadData} >
           <Button >请选择文件</Button>
         </Upload >

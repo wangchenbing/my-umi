@@ -1,25 +1,29 @@
 import React from 'react'
 import { CodeMirrorModul } from '@/components/Globol'
-import useUser from '@/models/global'
+import { useModel } from 'umi';
 
 export default (props: any) => {
-  const { counter, increment, decrement } = useUser()
+  const { counter, setCounter } = useModel('global')
   const { isModalOpen, setIsModalOpen, title } = props
-  console.log(counter, 'inhtml');
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
+  const propsList = {
+    title: title,
+    btnList: require('!raw-loader!@/components/InnerHTML'),
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
   return (
-    <CodeMirrorModul title={title} url={require('!raw-loader!@/components/InnerHTML')} open={isModalOpen} onCancel={handleCancel} >
+    <CodeMirrorModul {...propsList} >
       <button onClick={() => {
-        increment()
+        setCounter((item: number) => item + 1)
       }}>{counter}</button>
-      {/* <div dangerouslySetInnerHTML={{
+      <div dangerouslySetInnerHTML={{
         __html: ` <div>
                       <p>返回的字段</p>
                     </div>`
-      }} /> */}
+      }} />
     </CodeMirrorModul>
   )
 };

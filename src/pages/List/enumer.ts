@@ -25,12 +25,17 @@ export default [
     name: 'Redux使用',
     component: Com.ReduxComModule,
   },
-  {
-    name: 'useReducer',
-    component: Com.UseReducerModule,
-  },
+  // {
+  //   name: 'useReducer',
+  //   component: Com.UseReducerModule,
+  // },
   {
     name: 'CodeMirror',
     component: Com.CodemirrorModule,
   },
+  {
+    name: 'Storage',
+    component: Com.StorageModule,
+  },
+
 ]

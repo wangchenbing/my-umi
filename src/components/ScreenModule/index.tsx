@@ -48,9 +48,15 @@ export default (props: any) => {
     return _data
   }
   const filterData = handleChangeData()
+  const propsList = {
+    title: title,
+    btnList: btnList,
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
 
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} btnList={btnList}>
+    <CodeMirrorModul {...propsList}>
       <Input placeholder="搜索" style={{ width: '90%', marginBottom: 10 }} onChange={(e) => handleChangeInput(e)} />
       <div>
         <ul style={{ display: 'flex', padding: '0px', marginBottom: 9 }}>

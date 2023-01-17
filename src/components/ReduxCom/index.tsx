@@ -41,8 +41,14 @@ export default (props: any) => {
       store.dispatch(createIncrementAction('increment', Number(value)))
     }, 100)
   }
+  const propsList = {
+    title: title,
+    btnList: btnList,
+    open: isModalOpen,
+    onCancel: handleCancel
+  }
   return (
-    <CodeMirrorModul title={title} open={isModalOpen} onCancel={handleCancel} btnList={btnList}>
+    <CodeMirrorModul {...propsList} >
 
       <h2>当前值:{store.getState()}</h2>
       <select ref={ref}>

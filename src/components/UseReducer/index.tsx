@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import { Modal } from 'antd';
-import useUser from '@/models/global'
-
+import { useModel } from 'umi';
 
 export default (props: any) => {
   const { isModalOpen, setIsModalOpen, title } = props
-  const { counter, increment, decrement } = useUser()
-  console.log("file: index.tsx:9 ~ useUser()", useUser(), props)
+  const { counter, setCounter } = useModel('global')
 
   const handleCancel = () => {
     setIsModalOpen(false);

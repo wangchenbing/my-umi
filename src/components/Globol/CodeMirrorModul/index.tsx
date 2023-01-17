@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { Modal, Button, Tabs, Collapse } from 'antd';
+import { Modal, Tabs, Collapse } from 'antd';
 import CodeMirror from "@uiw/react-codemirror"
-// import { UnControlled as CodeMirror } from 'react-codemirror2'
-
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { javascript } from '@codemirror/lang-javascript';
 import "codemirror/keymap/sublime";
@@ -13,58 +11,41 @@ import "codemirror/addon/hint/show-hint.css";
 
 const { Panel } = Collapse;
 export default (props: any) => {
-  const { open, onCancel, title, url, width, btnList, footer = [] } = props
+  /* 
+    btnList:Array||string
+  */
+  const { open, onCancel, title, width, btnList, footer = null } = props
   const [proUrl, setProUrl] = useState<any>('')
 
-  const afterCloseFn = () => {
-    setProUrl('')
-  }
+  const CodeMirrorCom = () => <CodeMirror
+    value={proUrl?.default || (Array.isArray(btnList) ? btnList[0].url?.default : btnList.default)}
+    height="400px"
+    extensions={[javascript({ jsx: true })]}
+    theme={okaidia}
+    //只读模式
+    readOnly={true}
+  />
+
   return (
-    <Modal title={title} width={width || 1000} open={open} onCancel={onCancel} footer={footer} afterClose={afterCloseFn}>
+    <Modal title={title} width={width || 1000} open={open} onCancel={onCancel} footer={footer} afterClose={() => { setProUrl('') }}>
       {props.children}
       <Collapse ghost={true} >
-        <Panel header="Code" key="1" >
-          {btnList ? <Tabs
-            defaultActiveKey="0"
-            centered
-            onTabClick={(key, e) => {
-              console.log(key)
-              setProUrl(btnList[key].url)
-            }}
-            items={btnList.map((item: { name: string }, index: number) => {
-              return {
+        <Panel header="Code" key='1'>
+          {btnList && Array.isArray(btnList) ?
+            <Tabs
+              defaultActiveKey="0"
+              centered
+              onTabClick={key => setProUrl(btnList[Number(key)].url)}
+              items={btnList.map((item: { name: string }, index: number) => ({
                 label: item.name,
                 key: String(index),
-                children: <CodeMirror
-                  key={index}
-                  value={proUrl?.default || btnList[0].url?.default}
-                  height="400px"
-                  extensions={[javascript({ jsx: true })]}
-                  theme={okaidia}
-                  //只读模式
-                  readOnly={true}
-                />,
-              };
-            }
-            )}
-          /> : <CodeMirror
-            value={url?.default}
-            height="400px"
-            extensions={[javascript({ jsx: true })]}
-            theme={okaidia}
-            //只读模式
-            readOnly={true}
-          />}
+                children: <CodeMirrorCom />
+              })
+              )}
+            /> : <CodeMirrorCom />}
         </Panel>
-
       </Collapse>
-
-
-
-
     </Modal>
-
-
   )
 };
 

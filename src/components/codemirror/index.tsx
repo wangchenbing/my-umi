@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { Modal, Button, Input } from 'antd';
-
 import CodeMirror from "@uiw/react-codemirror"
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { javascript } from '@codemirror/lang-javascript';
@@ -9,9 +8,6 @@ import "codemirror/theme/monokai.css";
 import "codemirror/addon/hint/show-hint";
 import "codemirror/addon/hint/javascript-hint";
 import "codemirror/addon/hint/show-hint.css";
-// const H1Com = require('!raw-loader!./11').default
-// console.log(H1Com)
-
 
 export default (props: any) => {
   const { isModalOpen, setIsModalOpen, title } = props
@@ -22,14 +18,18 @@ export default (props: any) => {
   };
 
   useEffect(() => {
-
     setvalueData('console.log(11)')
-
-
   }, [])
 
+  const propsList = {
+    title: title,
+    open: isModalOpen,
+    onCancel: handleCancel,
+    footer: []
+  }
+
   return (
-    <Modal title={title} open={isModalOpen} onCancel={handleCancel} footer={[]} >
+    <Modal {...propsList}  >
       <CodeMirror
         value={valueData}
         height="500px"
