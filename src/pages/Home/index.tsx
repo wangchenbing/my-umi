@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   return (
     <PageContainer ghost>
       <div className={styles.container}>
-        <Guide name={trim(counter)} />
+        <Guide name={trim(String(counter))} />
       </div>
     </PageContainer>
   );
