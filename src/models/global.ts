@@ -3,11 +3,11 @@ import { DEFAULT_NAME } from '@/constants';
 import { useState } from 'react';
 
 const useUser = () => {
-  const [counter, setCounter] = useState<any>(DEFAULT_NAME);
+  const [ObjComList, setObjComList] = useState<any>(DEFAULT_NAME);
 
   return {
-    counter,
-    setCounter
+    ObjComList,
+    setObjComList,
   };
 };
-export default useUser
+export default useUser;

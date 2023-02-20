@@ -1,18 +1,34 @@
-// import { PageContainer } from '@ant-design/pro-components';
-// import { useAccess } from '@umijs/max';
-// import { Button } from 'antd';
+import React, { useState } from 'react';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import { arrayMoveImmutable } from 'array-move';
+import { Col, Row } from 'antd';
 
-const AccessPage: React.FC = () => {
-  return (
-    <div>
-      <div style={{ border: '1px solid black', width: '300px', height: '300px' }}>
-        <h2>接口返回html文本前端展示</h2>
-        <div dangerouslySetInnerHTML={{
-          __html: ' <div><button>lalal</button><p>jajhajaj</p></div>'
-        }} />
-      </div>
-    </div>
-  );
+export default () => {
+  const SortableItem = SortableElement(({ value }) => (
+    <Col span={6}>{value}</Col>
+  ));
+
+  const SortableList = SortableContainer(({ items }) => {
+    return (
+      <Row gutter={16}>
+        {items.map((value, index) => (
+          <SortableItem key={`item-${value}`} index={index} value={value} />
+        ))}
+      </Row>
+    );
+  });
+  const [arr, setarr] = useState([
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+    'Item 6',
+  ]);
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    console.log(111);
+    setarr((items) => arrayMoveImmutable(items, oldIndex, newIndex));
+  };
+  return <SortableList items={arr} onSortEnd={onSortEnd} axis="x" />;
 };
-
-export default AccessPage;
