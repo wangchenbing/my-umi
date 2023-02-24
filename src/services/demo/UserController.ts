@@ -94,3 +94,45 @@ export async function deleteUser(
     ...(options || {}),
   });
 }
+
+/** 此处后端没有提供注释 GET /api/v1/queryUserList */
+export async function queryUserList1(
+  params: {},
+  options?: { [key: string]: any },
+) {
+  return request<API.Result_string_>('/api/about/queryUserList1', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
+/** 此处后端没有提供注释 GET /api/v1/queryUserList */
+export async function queryUserList2(
+  params: {},
+  options?: { [key: string]: any },
+) {
+  return request<API.Result_string_>('/api/about/queryUserList2', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
+/** 此处后端没有提供注释 GET /api/v1/queryUserList */
+export async function clickfunlist(
+  params: {},
+  options?: { [key: string]: any },
+) {
+  return request<API.Result_string_>('/api/about/queryUserList2', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}

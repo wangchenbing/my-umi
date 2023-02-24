@@ -1,40 +1,51 @@
 import Com from '@/components';
+import ReactCom from '@/components/ReactList';
 
+const path = 'components/';
 export const DEFAULT_NAME = [
   {
-    name: '获取html文本',
+    title: '获取html文本',
+    FileName: `${path}InnerHTML`,
     component: Com.InnerHTMLModule,
   },
   {
-    name: '纯前端筛选',
+    title: '纯前端筛选',
+    FileName: `${path}ScreenModule`,
     component: Com.ScreenModule,
   },
   {
-    name: '获取文件的MD5值',
+    title: '获取文件的MD5值',
     component: Com.GetMd5Module,
   },
   {
-    name: '文本拷贝',
+    title: '文本拷贝',
     component: Com.CopyModule,
   },
   {
-    name: '动态验证码',
+    title: '动态验证码',
     component: Com.VerificationCodeModule,
   },
   {
-    name: 'Redux使用',
+    title: 'Redux使用',
     component: Com.ReduxComModule,
   },
-  // {
-  //   name: 'useReducer',
-  //   component: Com.UseReducerModule,
-  // },
   {
-    name: 'CodeMirror',
+    title: 'CodeMirror',
     component: Com.CodemirrorModule,
   },
   {
-    name: 'Storage',
+    title: 'Storage',
     component: Com.StorageModule,
+  },
+  {
+    title: '终止promise',
+    component: Com.AboutModule,
+  },
+];
+
+export const REACTHOOKSLIST = [
+  {
+    title: 'useReducer',
+    component: ReactCom.useReducer,
   },
 ];

@@ -1,19 +1,9 @@
 import React from 'react';
-import { CodeMirrorModul } from '@/components/Globol';
+import TemplateCom from '@/components/Globol/TemplatCom';
 
 export default (props: any) => {
-  const { isModalOpen, setIsModalOpen, title } = props;
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const propsList = {
-    title: title,
-    btnList: require('!raw-loader!@/components/InnerHTML'),
-    open: isModalOpen,
-    onCancel: handleCancel,
-  };
   return (
-    <CodeMirrorModul {...propsList}>
+    <TemplateCom {...props}>
       <div
         dangerouslySetInnerHTML={{
           __html: ` <div>
@@ -21,6 +11,6 @@ export default (props: any) => {
                     </div>`,
         }}
       />
-    </CodeMirrorModul>
+    </TemplateCom>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Tabs, Collapse } from 'antd';
+import { Modal, Tabs, Collapse, Space, Badge, Tooltip, List } from 'antd';
 import CodeMirror from '@uiw/react-codemirror';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { javascript } from '@codemirror/lang-javascript';
@@ -10,11 +10,27 @@ import 'codemirror/addon/hint/javascript-hint';
 import 'codemirror/addon/hint/show-hint.css';
 
 const { Panel } = Collapse;
-export default (props: any) => {
-  /* 
-    btnList:Array||string
-  */
-  const { open, onCancel, title, width, btnList, footer = null } = props;
+interface PropsInter {
+  open: boolean;
+  onCancel: () => void;
+  title: string;
+  width?: number | string;
+  btnList: any | any[];
+  footer?: any;
+  warningList?: string[];
+  children: any;
+}
+
+export default (props: PropsInter) => {
+  const {
+    open,
+    onCancel,
+    title,
+    width,
+    btnList,
+    footer = null,
+    warningList = [],
+  } = props;
   const [proUrl, setProUrl] = useState<any>('');
 
   const CodeMirrorCom = () => (
@@ -34,7 +50,31 @@ export default (props: any) => {
 
   return (
     <Modal
-      title={title}
+      title={
+        warningList.length === 0 ? (
+          title
+        ) : (
+          <Tooltip
+            placement="topLeft"
+            title={
+              <List
+                size="small"
+                bordered
+                dataSource={warningList}
+                renderItem={(item: string) => (
+                  <List.Item style={{ color: '#fff' }}>{item}</List.Item>
+                )}
+              />
+            }
+          >
+            <Space>
+              <Badge dot offset={[10, 0]}>
+                {title}
+              </Badge>
+            </Space>
+          </Tooltip>
+        )
+      }
       width={width || 1000}
       open={open}
       onCancel={onCancel}
