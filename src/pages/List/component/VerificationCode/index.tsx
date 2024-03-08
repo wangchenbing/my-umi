@@ -99,7 +99,7 @@ export default (props: any) => {
   };
   const propsList = {
     title: title,
-    btnList: require('!raw-loader!@/components/VerificationCode'),
+    btnList: require('!raw-loader!@/pages/List/component/VerificationCode'),
     open: isModalOpen,
     onCancel: handleCancel
   }

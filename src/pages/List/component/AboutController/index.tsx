@@ -14,7 +14,7 @@ export default (props: any) => {
   };
   const propsList = {
     title: title,
-    btnList: require('!raw-loader!@/components/AboutController'),
+    btnList: require('!raw-loader!@/pages/List/component/AboutController'),
     open: isModalOpen,
     onCancel: handleCancel,
     warningList: ['注意，请使用低速3G测试，并查看网络请求状态！'],

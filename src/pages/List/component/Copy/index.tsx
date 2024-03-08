@@ -20,7 +20,7 @@ export default (props: any) => {
   }
   const propsList = {
     title: title,
-    btnList: require('!raw-loader!@/components/Copy'),
+    btnList: require('!raw-loader!@/pages/List/component/Copy'),
     open: isModalOpen,
     onCancel: handleCancel
   }

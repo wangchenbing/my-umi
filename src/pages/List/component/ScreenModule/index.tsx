@@ -57,9 +57,8 @@ export default (props: any) => {
           {typeList1.map((item, i) => (
             <li
               key={i}
-              className={`tags-item ${
-                params.areaType === item.key && 'active'
-              }`}
+              className={`tags-item ${params.areaType === item.key && 'active'
+                }`}
               onClick={() => handleClick(item.key, 'area')}
             >
               {item.name}
@@ -70,9 +69,8 @@ export default (props: any) => {
           {typeList2.map((item, i) => (
             <li
               key={i}
-              className={`tags-item ${
-                params.policyType === item.key && 'active'
-              }`}
+              className={`tags-item ${params.policyType === item.key && 'active'
+                }`}
               onClick={() => handleClick(item.key, 'policyType')}
             >
               {item.name}

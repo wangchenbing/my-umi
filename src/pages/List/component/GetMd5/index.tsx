@@ -11,9 +11,9 @@ export default (props: any) => {
     return new Promise((resolve) => {
       let tmp_md5;
       let blobSlice =
-          File.prototype.slice ||
-          File.prototype.mozSlice ||
-          File.prototype.webkitSlice,
+        File.prototype.slice ||
+        File.prototype.mozSlice ||
+        File.prototype.webkitSlice,
         // file = this.files[0],
         chunkSize = 8097152, // Read in chunks of 2MB
         chunks = Math.ceil(file.size / chunkSize),
@@ -61,7 +61,7 @@ export default (props: any) => {
   };
   const propsList = {
     title: title,
-    btnList: require('!raw-loader!@/components/GetMd5'),
+    btnList: require('!raw-loader!@/pages/List/component/GetMd5'),
     open: isModalOpen,
     onCancel: handleCancel,
   };

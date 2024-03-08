@@ -4,8 +4,7 @@ import GetMd5Module from './GetMd5';
 import CopyModule from './Copy';
 import VerificationCodeModule from './VerificationCode';
 import ReduxComModule from './ReduxCom';
-import UseReducerModule from './UseReducer';
-import CodemirrorModule from './codemirror';
+import CodemirrorModule from './Codemirror';
 import StorageModule from './Storage';
 import AboutModule from './AboutController';
 
@@ -16,7 +15,6 @@ export default {
   CopyModule,
   VerificationCodeModule,
   ReduxComModule,
-  UseReducerModule,
   CodemirrorModule,
   StorageModule,
   AboutModule,

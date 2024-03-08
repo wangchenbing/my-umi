@@ -1,7 +1,6 @@
-import Com from '@/components';
-import ReactCom from '@/components/ReactList';
+import Com from '@/pages/List/component';
 
-const path = 'components/';
+const path = 'pages/List/component/';
 export const DEFAULT_NAME = [
   {
     title: '获取html文本',
@@ -15,6 +14,7 @@ export const DEFAULT_NAME = [
   },
   {
     title: '获取文件的MD5值',
+    FileName: `${path}GetMd5Module`,
     component: Com.GetMd5Module,
   },
   {
@@ -31,6 +31,7 @@ export const DEFAULT_NAME = [
   },
   {
     title: 'CodeMirror',
+    FileName: `${path}Codemirror`,
     component: Com.CodemirrorModule,
   },
   {
@@ -43,9 +44,3 @@ export const DEFAULT_NAME = [
   },
 ];
 
-export const REACTHOOKSLIST = [
-  {
-    title: 'useReducer',
-    component: ReactCom.useReducer,
-  },
-];
