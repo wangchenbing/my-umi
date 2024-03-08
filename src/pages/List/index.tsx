@@ -10,12 +10,16 @@ export default () => {
       title,
       FileName,
       component,
+      warningList,
+      btnList,
       data = useState<boolean>(false),
     } = item;
     return {
       title,
       FileName,
       component,
+      warningList,
+      btnList,
       isModalOpen: data[0],
       setIsModalOpen: data[1],
     };

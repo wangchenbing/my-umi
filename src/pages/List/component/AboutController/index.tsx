@@ -3,22 +3,11 @@ import services from '@/services/demo';
 import { Space, Tag, Tabs, Table } from 'antd';
 import type { TabsProps } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { CodeMirrorModul } from '@/components/Globol';
+import TemplateCom from '@/components/Globol/TemplatCom';
 const { queryUserList1, queryUserList2 } = services.UserController;
 
 export default (props: any) => {
-  const { isModalOpen, setIsModalOpen, title } = props;
   const [listData, setListData] = useState([]);
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const propsList = {
-    title: title,
-    btnList: require('!raw-loader!@/pages/List/component/AboutController'),
-    open: isModalOpen,
-    onCancel: handleCancel,
-    warningList: ['注意，请使用低速3G测试，并查看网络请求状态！'],
-  };
 
   const columns: ColumnsType<any> = [
     {
@@ -111,9 +100,9 @@ export default (props: any) => {
   ];
 
   return (
-    <CodeMirrorModul {...propsList}>
+    <TemplateCom {...props}>
       <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
       <Table columns={columns} dataSource={listData} />
-    </CodeMirrorModul>
+    </TemplateCom>
   );
 };

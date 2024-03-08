@@ -17,7 +17,7 @@ interface PropsInter {
   width?: number | string;
   btnList: any | any[];
   footer?: any;
-  warningList?: string[];
+  warningList?: string;
   children: any;
 }
 
@@ -29,8 +29,9 @@ export default (props: PropsInter) => {
     width,
     btnList,
     footer = null,
-    warningList = [],
+    warningList = '',
   } = props;
+  console.log(props);
   const [proUrl, setProUrl] = useState<any>('');
 
   const CodeMirrorCom = () => (
@@ -51,21 +52,12 @@ export default (props: PropsInter) => {
   return (
     <Modal
       title={
-        warningList.length === 0 ? (
+        !warningList ? (
           title
         ) : (
           <Tooltip
             placement="topLeft"
-            title={
-              <List
-                size="small"
-                bordered
-                dataSource={warningList}
-                renderItem={(item: string) => (
-                  <List.Item style={{ color: '#fff' }}>{item}</List.Item>
-                )}
-              />
-            }
+            title={warningList}
           >
             <Space>
               <Badge dot offset={[10, 0]}>

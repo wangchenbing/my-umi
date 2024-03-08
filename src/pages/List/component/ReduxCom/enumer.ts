@@ -1,4 +1,4 @@
-export const btnList = [
+export default [
   {
     name: 'index.tsx',
     url: require('!raw-loader!@/pages/List/component/ReduxCom')
